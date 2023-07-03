@@ -1,6 +1,6 @@
 type UserFormProps = {
   className?: string;
-  user: {
+  user?: {
     id: string | number;
     firstName: string;
     lastName: string;
@@ -18,7 +18,7 @@ const UserForm = (props: UserFormProps) => {
           <label>First Name</label>
           <input
             type="text"
-            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm w-full"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
             name="firstName"
             defaultValue={user?.firstName || ""}
           />
@@ -27,7 +27,7 @@ const UserForm = (props: UserFormProps) => {
           <label>Last Name</label>
           <input
             type="text"
-            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm w-full"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
             name="lastName"
             defaultValue={user?.lastName || ""}
           />
@@ -36,7 +36,7 @@ const UserForm = (props: UserFormProps) => {
         <div>
           <button
             type="submit"
-            className="bg-sky-600 text-sky-50 px-4 py-3 font-semibold w-full mt-4"
+            className="w-full px-4 py-3 mt-4 font-semibold bg-sky-600 text-sky-50"
           >
             Save
           </button>

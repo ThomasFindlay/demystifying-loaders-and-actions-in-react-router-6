@@ -15,7 +15,7 @@ const CreateUser = () => {
 
   return (
     <div className="max-w-sm py-24 mx-auto">
-      <UserForm user={null} onSubmit={onSubmit} />
+      <UserForm onSubmit={onSubmit} />
     </div>
   );
 };
