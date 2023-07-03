@@ -2,11 +2,7 @@ import { useLoaderData, useSubmit } from "react-router-dom";
 import { EditUserLoaderResponse } from "./EditUser.loader";
 import UserForm from "./components/UserForm";
 
-type EditUserProps = {
-  className?: string;
-};
-
-const EditUser = (props: EditUserProps) => {
+const EditUser = () => {
   const { user } = useLoaderData() as EditUserLoaderResponse;
   const submit = useSubmit();
 
@@ -20,7 +16,7 @@ const EditUser = (props: EditUserProps) => {
   };
 
   return (
-    <div className="py-24 max-w-sm mx-auto">
+    <div className="max-w-sm py-24 mx-auto">
       <UserForm user={user} onSubmit={onSubmit} />
     </div>
   );

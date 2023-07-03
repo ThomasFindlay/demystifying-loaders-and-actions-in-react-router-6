@@ -1,10 +1,9 @@
 import { ActionFunctionArgs, redirect } from "react-router-dom";
 
 export const createUserAction = async ({ request }: ActionFunctionArgs) => {
-  console.log("create user action called");
-  // Get the form data
+  // Get the form data from the request
   const formData = await request.formData();
-  // Convert the data to an object format
+  // Convert the form data to an object format
   const payload = Object.fromEntries(formData.entries());
 
   await fetch("http://localhost:4000/users", {

@@ -1,11 +1,7 @@
 import { useSubmit } from "react-router-dom";
 import UserForm from "./components/UserForm";
 
-type CreateUserProps = {
-  className?: string;
-};
-
-const CreateUser = (props: CreateUserProps) => {
+const CreateUser = () => {
   const submit = useSubmit();
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = e => {
@@ -17,7 +13,7 @@ const CreateUser = (props: CreateUserProps) => {
     });
   };
   return (
-    <div className="py-24 max-w-sm mx-auto">
+    <div className="max-w-sm py-24 mx-auto">
       <UserForm user={null} onSubmit={onSubmit} />
     </div>
   );

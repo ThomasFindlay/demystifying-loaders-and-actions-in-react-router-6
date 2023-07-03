@@ -1,15 +1,11 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { UsersLoaderResponse } from "./Users.loader";
 
-type UsersProps = {
-  className?: string;
-};
-
-const Users = (props: UsersProps) => {
+const Users = () => {
   const { users } = useLoaderData() as UsersLoaderResponse;
   return (
     <div className="max-w-sm mx-auto">
-      <h1 className="text-semibold text-2xl mb-6">Users</h1>
+      <h1 className="mb-6 text-2xl text-semibold">Users</h1>
 
       <ul className="space-y-2">
         {users.map(user => {
@@ -25,7 +21,7 @@ const Users = (props: UsersProps) => {
 
       <Link
         to="/user/create"
-        className="inline-block bg-sky-600 text-sky-50 px-4 py-3 font-semibold w-full mt-4"
+        className="inline-block w-full px-4 py-3 mt-4 font-semibold bg-sky-600 text-sky-50"
       >
         Add User
       </Link>
