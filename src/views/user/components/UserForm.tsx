@@ -1,3 +1,5 @@
+import { Form } from "react-router-dom";
+
 type UserFormProps = {
   className?: string;
   user?: {
@@ -5,14 +7,15 @@ type UserFormProps = {
     firstName: string;
     lastName: string;
   } | null;
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  // onSubmit: React.FormEventHandler<HTMLFormElement>;
+  action: string;
 };
 
 const UserForm = (props: UserFormProps) => {
-  const { className, user, onSubmit } = props;
+  const { className, user, action } = props;
   return (
     <div className={className}>
-      <form className="space-y-4" method="post" onSubmit={onSubmit}>
+      <Form className="space-y-4" method="post" action={action}>
         <input type="hidden" name="id" defaultValue={user?.id} />
         <div className="flex flex-col items-start gap-y-2">
           <label>First Name</label>
@@ -33,15 +36,27 @@ const UserForm = (props: UserFormProps) => {
           />
         </div>
 
-        <div>
+        <div className="space-y-4">
           <button
             type="submit"
+            name="intent"
+            value="save"
             className="w-full px-4 py-3 mt-4 font-semibold bg-sky-600 text-sky-50"
           >
             Save
           </button>
+          {user ? (
+            <button
+              type="submit"
+              name="intent"
+              value="delete"
+              className="w-full px-4 py-3 font-semibold bg-gray-100 hover:bg-gray-200"
+            >
+              Delete
+            </button>
+          ) : null}
         </div>
-      </form>
+      </Form>
     </div>
   );
 };

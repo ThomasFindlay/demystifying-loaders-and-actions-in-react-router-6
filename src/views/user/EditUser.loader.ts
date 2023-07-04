@@ -1,16 +1,20 @@
-import { LoaderFunctionArgs } from "react-router-dom";
+import { LoaderFunctionArgs, redirect } from "react-router-dom";
 import { z } from "zod";
 import { userSchema } from "../../schema/user.schema";
 
 export const editUserLoader = async ({ params }: LoaderFunctionArgs) => {
-  console.log(params);
-  const response = await fetch(`http://localhost:4000/users/${params.id}`);
-
-  const user = await response.json();
-  console.log(user);
-  return {
-    user: userSchema.parse(user),
-  };
+  try {
+    const response = await fetch(`http://localhost:4000/users/${params.id}`);
+    const user = await response.json();
+    return {
+      user: userSchema.parse(user),
+    };
+  } catch (error) {
+    return redirect("/");
+  }
 };
 
-export type EditUserLoaderResponse = Awaited<ReturnType<typeof editUserLoader>>;
+export type EditUserLoaderResponse = Exclude<
+  Awaited<ReturnType<typeof editUserLoader>>,
+  Response
+>;
