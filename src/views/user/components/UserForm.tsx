@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigation } from "react-router-dom";
 
 type UserFormProps = {
   className?: string;
@@ -7,12 +7,16 @@ type UserFormProps = {
     firstName: string;
     lastName: string;
   } | null;
-  // onSubmit: React.FormEventHandler<HTMLFormElement>;
   action: string;
 };
 
 const UserForm = (props: UserFormProps) => {
   const { className, user, action } = props;
+  const navigation = useNavigation();
+  const isSubmitPending =
+    navigation.state === "submitting" && navigation.formMethod === "post";
+  const isDeletePending =
+    navigation.state === "submitting" && navigation.formMethod === "delete";
   return (
     <div className={className}>
       <Form className="space-y-4" method="post" action={action}>
@@ -42,17 +46,20 @@ const UserForm = (props: UserFormProps) => {
             name="intent"
             value="save"
             className="w-full px-4 py-3 mt-4 font-semibold bg-sky-600 text-sky-50"
+            disabled={isSubmitPending || isDeletePending}
           >
-            Save
+            {isSubmitPending ? "Saving..." : "Save"}
           </button>
           {user ? (
             <button
               type="submit"
               name="intent"
               value="delete"
+              formMethod="delete"
               className="w-full px-4 py-3 font-semibold bg-gray-100 hover:bg-gray-200"
+              disabled={isSubmitPending || isDeletePending}
             >
-              Delete
+              {isDeletePending ? "Deleting..." : "Delete"}
             </button>
           ) : null}
         </div>

@@ -6,7 +6,7 @@ const EditUser = () => {
   const { user } = useLoaderData() as EditUserLoaderResponse;
 
   return (
-    <div className="max-w-sm py-24 mx-auto">
+    <div className="max-w-sm mx-auto">
       <UserForm user={user} action={`/user/${user.id}`} />
     </div>
   );

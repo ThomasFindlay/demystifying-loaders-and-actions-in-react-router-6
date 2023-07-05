@@ -11,14 +11,10 @@
       "lastName": "Snape"
     },
     {
-      "id": 3,
+      "id": 1688571991306,
       "firstName": "Minerva",
-      "lastName": "McGonnagal"
-    },
-    {
-      "id": 1688401657728,
-      "firstName": "Ron",
-      "lastName": "Wesley"
+      "lastName": "McGonnagal",
+      "intent": "save"
     }
   ]
 }
